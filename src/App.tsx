@@ -1,21 +1,34 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
 
-import './App.css'
-import { TodoT } from './components/Todo'
-import Todos from './components/Todos'
+import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
+import { RootState } from './app/store'
+import { selectTodos, toggleTodo } from './features/todos/todosSlice'
+import { useEffect } from 'react'
+import { fetchTodos } from './features/todos/fetchTodos'
+
+const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
 
 const App = () => {
-  const [todos, setTodos] = useState<TodoT[]>([])
-
+  const dispatch = useDispatch()
+  const todos = useTypedSelector(selectTodos)
+  console.log(todos)
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((response) => response.json())
-      .then((json) => setTodos(json))
-  }, [])
-
-  return <Todos todos={todos} />
-
+    dispatch(fetchTodos())
+  }, [dispatch])
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id + Math.random()}>
+          <input
+            type='checkbox'
+            checked={todo.completed}
+            onChange={() => dispatch(toggleTodo(todo.id))}
+          />
+          {todo.title}
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export default App
