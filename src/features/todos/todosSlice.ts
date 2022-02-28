@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { buildQueries } from '@testing-library/react'
 import { RootState } from '../../app/store'
-import { Todo, TodoId } from './types'
+import { Todo, TodoId } from '../../types/todoTypes'
 import { fetchTodos } from './fetchTodos'
 
 type TodosState = {

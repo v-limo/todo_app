@@ -1,6 +1,8 @@
 {
   "name": "todo",
   "version": "0.1.0",
+  "description": "Fullstack Todo app",
+  "main": "./src/backend/index.js",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
@@ -11,6 +13,11 @@
     "@types/node": "^16.11.24",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -19,6 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "nodemon backend/index.js",
+    "server": "node backend/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
