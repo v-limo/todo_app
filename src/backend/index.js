@@ -13,6 +13,7 @@ app.use(express.json())
 // app.use(express.bodyParser())
 
 app.use('/api/v1/todos', require('./routes/todoRoutes'))
+app.use('/api/v1/users', require('./routes/userRoutes'))
 
 connectDB()
 
