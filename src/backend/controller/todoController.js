@@ -3,7 +3,7 @@ const Todo = require('../models/todoModel')
 const User = require('../models/userModel')
 
 const getTodo = asyncHandler(async (req, res) => {
-  const todos = await Todo.find({})
+  const todos = await Todo.find({ user: req.user.id })
   res.status(200).json(todos)
 })
 
