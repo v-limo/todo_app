@@ -9,7 +9,7 @@ const {
   loginUser,
 } = require('../controller/userController')
 
-router.post('/', registerUser)
+router.post('/register', registerUser)
 router.post('/login', loginUser)
 router.get('/', protect, getUser)
 
