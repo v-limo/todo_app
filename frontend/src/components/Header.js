@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 
 export default function Bar() {
   return (
@@ -20,23 +20,25 @@ export default function Bar() {
           <HomeIcon />
         </Link>
 
-        <Link to='/visited'>
-          <Button variant='outlined' color='primary'>
-            Login
+        <Box>
+          <Link to='/login'>
+            <Button variant='outlined' color='primary'>
+              Login
+            </Button>
+          </Link>
+          <Link to='/register'>
+            <Button variant='outlined' color='primary'>
+              Register
+            </Button>
+          </Link>
+          <Button
+            onClick={() => {
+              return undefined
+            }}
+          >
+            {!true ? <DarkModeIcon /> : <LightModeIcon />}
           </Button>
-        </Link>
-        <Link to='/fevorite'>
-          <Button variant='outlined' color='primary'>
-            Register
-          </Button>
-        </Link>
-        <Button
-          onClick={() => {
-            return undefined
-          }}
-        >
-          {!true ? <DarkModeIcon /> : <LightModeIcon />}
-        </Button>
+        </Box>
       </Toolbar>
     </AppBar>
   )

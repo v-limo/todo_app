@@ -1,12 +1,14 @@
 import ReactDOM from 'react-dom'
-import './index.css'
-
+// import './index.css'
 import { Provider } from 'react-redux'
-import { store } from '../app/store'
-import App from './App';
+
+import App from './App'
+import { CssBaseline } from '@mui/material'
+import { store } from './app/store'
 
 ReactDOM.render(
   <Provider store={store}>
+    <CssBaseline />
     <App />
   </Provider>,
   document.getElementById('root')

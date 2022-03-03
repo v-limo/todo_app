@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import todosReducer from '../frontend/features/todos/todosSlice'
-import darkModeReducer from '../frontend/features/darkMode/darkModeSlice'
+import darkModeReducer from '../features/darkMode/darkModeSlice'
+import todosReducer from '../features/todos/todosSlice'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 export const store = configureStore({
   reducer: {

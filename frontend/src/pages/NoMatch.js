@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { Link } from 'react-router-dom'
-import img from '../frontend/img/img_not_found.jpg'
+import img from '../img/img_not_found.jpg'
 const NoMatch = () => (
   <>
     <Box>

@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Paper, ThemeProvider } from '@mui/material'
+import { Paper } from '@mui/material'
 
 import { Home } from './pages/Home'
 
 import NoMatch from './pages/NoMatch'
 
 import Layout from './pages/Layout'
-import { useSelector } from 'react-redux'
 
 import { Register } from './pages/Register'
 import { Login } from './pages/Login'
 import TodoDetails from './pages/TodoDetails'
+import { AddTodo } from './pages/AddTodo'
 
 const App = () => {
   // let { darkMode: mode } = useSelector(selectDarkmode)
@@ -25,6 +25,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path='register' element={<Register />} />
             <Route path='login' element={<Login />} />
+            <Route path='addTodo' element={<AddTodo />} />
             <Route path='todo/:id' element={<TodoDetails />} />
             <Route path='*' element={<NoMatch />} />
           </Route>
