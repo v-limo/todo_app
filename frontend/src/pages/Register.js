@@ -2,9 +2,9 @@ import { useState } from 'react'
 import Container from '@mui/material/Container'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
-import FormHelperText from '@mui/material/FormHelperText'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import { Card } from '@mui/material'
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ export const Register = () => {
     console.log('submit')
   }
   return (
-    <Container
+    <Card
       maxWidth='lg'
       sx={{
         minHeight: '100vh',
@@ -36,6 +36,8 @@ export const Register = () => {
           onChange={(e) => {
             setFormData({ ...formData, userName: e.target.value })
           }}
+          margin='normal'
+          required
         />
         <FormLabel>Email</FormLabel>
         <TextField
@@ -46,8 +48,10 @@ export const Register = () => {
           onChange={(e) => {
             setFormData({ ...formData, email: e.target.value })
           }}
+          margin='normal'
+          required
         />
-        <FormHelperText>Password</FormHelperText>
+        <FormLabel>Password</FormLabel>
         <TextField
           sx={{ minWidth: '40vw' }}
           type='password'
@@ -56,6 +60,8 @@ export const Register = () => {
           onChange={(e) => {
             setFormData({ ...formData, password: e.target.value })
           }}
+          margin='normal'
+          required
         />
 
         <Button
@@ -69,6 +75,6 @@ export const Register = () => {
           Register
         </Button>
       </FormControl>
-    </Container>
+    </Card>
   )
 }

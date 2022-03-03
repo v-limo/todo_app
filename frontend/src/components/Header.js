@@ -5,8 +5,15 @@ import Toolbar from '@mui/material/Toolbar'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { Box, Button } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  selectDarkMode,
+  toggleDarkMode,
+} from '../features/darkMode/darkModeSlice'
 
 export default function Bar() {
+  const dispatch = useDispatch()
+  const { darkMode } = useSelector(selectDarkMode)
   return (
     <AppBar sx={{ backgroundColor: 'background.default' }}>
       <Toolbar
@@ -31,12 +38,8 @@ export default function Bar() {
               Register
             </Button>
           </Link>
-          <Button
-            onClick={() => {
-              return undefined
-            }}
-          >
-            {!true ? <DarkModeIcon /> : <LightModeIcon />}
+          <Button onClick={() => dispatch(toggleDarkMode())}>
+            {!darkMode ? <DarkModeIcon /> : <LightModeIcon />}
           </Button>
         </Box>
       </Toolbar>

@@ -2,10 +2,9 @@ import { useState } from 'react'
 import Container from '@mui/material/Container'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
-import FormHelperText from '@mui/material/FormHelperText'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { Box } from '@mui/material'
+
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +39,7 @@ export const Login = () => {
             setFormData({ ...formData, email: e.target.value })
           }}
         />
-        <FormHelperText>Password</FormHelperText>
+        <FormLabel>Password</FormLabel>
         <TextField
           sx={{ minWidth: '40vw' }}
           id='password'

@@ -1,4 +1,5 @@
 import { Box, Container } from '@mui/material'
+import { AddTodo } from './AddTodo'
 
 export const Home = () => {
   return (
@@ -8,6 +9,9 @@ export const Home = () => {
       sx={{ minHeight: '100vh', mt: '64px' }}
     >
       <Box>Content</Box>
+      <Box>
+        <AddTodo />
+      </Box>
     </Container>
   )
 }
