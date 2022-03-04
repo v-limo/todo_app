@@ -6,14 +6,18 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { Box, Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   selectDarkMode,
   toggleDarkMode,
 } from '../features/darkMode/darkModeSlice'
+import { logout, selectAuth } from '../features/auth/authSlice'
 
 export default function Bar() {
   const dispatch = useDispatch()
   const { darkMode } = useSelector(selectDarkMode)
+  const navigate = useNavigate()
+  const { user } = useSelector(selectAuth)
   return (
     <AppBar sx={{ backgroundColor: 'background.default' }}>
       <Toolbar
@@ -23,21 +27,36 @@ export default function Bar() {
           alignItems: 'center',
         }}
       >
-        <Link to='/'>
-          <HomeIcon />
-        </Link>
+        <HomeIcon onClick={() => navigate('/')} />
 
         <Box>
-          <Link to='/login'>
-            <Button variant='outlined' color='primary'>
-              Login
+          {user ? (
+            <Button
+              variant='outlined'
+              color='primary'
+              onClick={() => dispatch(logout())}
+            >
+              Logout
             </Button>
-          </Link>
-          <Link to='/register'>
-            <Button variant='outlined' color='primary'>
-              Register
-            </Button>
-          </Link>
+          ) : (
+            <>
+              <Button
+                variant='outlined'
+                color='primary'
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </Button>
+              <Button
+                variant='outlined'
+                color='primary'
+                onClick={() => navigate('/register')}
+              >
+                Register
+              </Button>
+            </>
+          )}
+
           <Button onClick={() => dispatch(toggleDarkMode())}>
             {!darkMode ? <DarkModeIcon /> : <LightModeIcon />}
           </Button>

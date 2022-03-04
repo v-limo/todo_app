@@ -19,13 +19,15 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    resetState(state: authState, action: PayloadAction) {
+    logout(state: authState, action: PayloadAction) {
       state.isLoading = false
       state.error = false
       state.user = null
+      localStorage.removeItem("user")
     }
   },
   extraReducers: (builder) => {
+
     builder.addCase(register.pending, (state) => {
       state.isLoading = true
       state.error = false
@@ -43,9 +45,11 @@ export const authSlice = createSlice({
       state.error = true
       state.user = null
     })
+
+    
   },
 })
 
-export const { resetState } = authSlice.actions
+export const { logout } = authSlice.actions
 export const selectAuth = (state: RootState) => state.auth
 export default authSlice.reducer
