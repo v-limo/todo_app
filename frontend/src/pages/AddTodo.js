@@ -31,7 +31,6 @@ export const AddTodo = () => {
       <FormControl>
         <FormLabel>Todo</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
           id='todo'
           value={formData.todo}
           onChange={(e) => {
@@ -40,7 +39,6 @@ export const AddTodo = () => {
         />
         <FormLabel>Dateline</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
           type='date'
           id='dateline'
           value={formData.dateline}

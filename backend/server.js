@@ -1,13 +1,14 @@
 require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
-
+const corst = require('cors')
 const { unknownEndpoint } = require('./middleware/unknownEndpoint')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 const PORT = process.env.PORT || 5000
 const app = express()
 
+app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 

@@ -1,22 +1,45 @@
 import { useState } from 'react'
-import Container from '@mui/material/Container'
+import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetState } from './../features/auth/authSlice'
+import { useNavigate } from 'react-router-dom'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { Card } from '@mui/material'
+import { selectAuth } from '../features/auth/authSlice'
+import { Loading } from '../components/Loading'
+import { register } from '../features/auth/register'
 
 export const Register = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user, isLoading, error } = useSelector(selectAuth)
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    userName: '',
+    repeatPassword: '',
+    username: '',
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submit')
+    const { email, password, username, repeatPassword } = formData
+    if (!email || !password || !username || !repeatPassword) {
+      toast.error('Fill all the details')
+    } else if (password !== repeatPassword) {
+      toast.error("password and repeatpassword don't match")
+    } else {
+      toast.success('login success')
+      dispatch(register({ email, password, username }))
+      navigate('/')
+    }
   }
+
+  isLoading && <Loading />
+
   return (
     <Card
       maxWidth='lg'
@@ -28,20 +51,18 @@ export const Register = () => {
       }}
     >
       <FormControl>
-        <FormLabel>Username</FormLabel>
+        <FormLabel>username</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
           id='email'
-          value={formData.userName}
+          value={formData.username}
           onChange={(e) => {
-            setFormData({ ...formData, userName: e.target.value })
+            setFormData({ ...formData, username: e.target.value })
           }}
           margin='normal'
           required
         />
         <FormLabel>Email</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
           type='email'
           id='email'
           value={formData.email}
@@ -53,14 +74,22 @@ export const Register = () => {
         />
         <FormLabel>Password</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
           type='password'
           id='password'
           value={formData.password}
           onChange={(e) => {
             setFormData({ ...formData, password: e.target.value })
           }}
-          margin='normal'
+          required
+        />
+        <FormLabel>Repeat assword</FormLabel>
+        <TextField
+          type='password'
+          id='repeatpassword'
+          value={formData.repeatPassword}
+          onChange={(e) => {
+            setFormData({ ...formData, repeatPassword: e.target.value })
+          }}
           required
         />
 

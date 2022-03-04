@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Paper } from '@mui/material'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Home } from './pages/Home'
 import NoMatch from './pages/NoMatch'
@@ -14,8 +16,8 @@ import { darkTheme, lightTheme } from './theme'
 import { useSelector } from 'react-redux'
 
 const App = () => {
- let { darkMode: mode } = useSelector(selectDarkMode)
- const theme = mode ? darkTheme : lightTheme
+  let { darkMode: mode } = useSelector(selectDarkMode)
+  const theme = mode ? darkTheme : lightTheme
 
   return (
     <ThemeProvider theme={theme}>
@@ -32,6 +34,7 @@ const App = () => {
             </Route>
           </Routes>
         </Router>
+        <ToastContainer />
       </Paper>
     </ThemeProvider>
   )

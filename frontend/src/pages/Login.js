@@ -32,7 +32,7 @@ export const Login = () => {
       <FormControl>
         <FormLabel>Email</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
+          
           id='email'
           value={formData.email}
           onChange={(e) => {
@@ -41,7 +41,7 @@ export const Login = () => {
         />
         <FormLabel>Password</FormLabel>
         <TextField
-          sx={{ minWidth: '40vw' }}
+          
           id='password'
           value={formData.password}
           onChange={(e) => {
