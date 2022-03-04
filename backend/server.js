@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
-const corst = require('cors')
+const cors = require('cors')
 const { unknownEndpoint } = require('./middleware/unknownEndpoint')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
@@ -12,10 +12,10 @@ app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 
+connectDB()
+
 app.use('/api/v1/todos', require('./routes/todoRoutes'))
 app.use('/api/v1/users', require('./routes/userRoutes'))
-
-connectDB()
 
 app.get('/', (req, res) => {
   res.json({ message: 'Health Check' })

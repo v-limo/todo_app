@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetState } from './../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
@@ -24,6 +23,15 @@ export const Register = () => {
     username: '',
   })
 
+  useEffect(() => {
+    if (error) {
+      toast.error('Error')
+    } else if (user !== null) {
+      toast.success('Register success')
+      navigate('/')
+    }
+  }, [error, isLoading, navigate, user])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const { email, password, username, repeatPassword } = formData
@@ -32,13 +40,13 @@ export const Register = () => {
     } else if (password !== repeatPassword) {
       toast.error("password and repeatpassword don't match")
     } else {
-      toast.success('login success')
       dispatch(register({ email, password, username }))
-      navigate('/')
     }
   }
 
-  isLoading && <Loading />
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <Card

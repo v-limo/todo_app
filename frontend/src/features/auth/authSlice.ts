@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 import { USerType } from '../../types/userTypes'
+import { login } from './login'
 import { register } from './register'
 
 type authState = {
@@ -28,6 +29,8 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
 
+
+    //Register
     builder.addCase(register.pending, (state) => {
       state.isLoading = true
       state.error = false
@@ -36,8 +39,9 @@ export const authSlice = createSlice({
     builder.addCase(register.fulfilled, (state, { payload }) => {
       state.isLoading = false
       state.error = false
+      state.user = null
       state.user = payload
-      localStorage.set("user", JSON.stringify(payload))
+      localStorage.setItem("user", JSON.stringify(payload))
     })
 
     builder.addCase(register.rejected, (state) => {
@@ -46,7 +50,28 @@ export const authSlice = createSlice({
       state.user = null
     })
 
-    
+
+    //Login
+    builder.addCase(login.pending, (state) => {
+      state.isLoading = true
+      state.user = null
+      state.error = false
+    })
+
+    builder.addCase(login.fulfilled, (state, { payload }) => {
+      state.isLoading = false
+      state.error = false
+      state.user = null
+      state.user = payload
+      localStorage.setItem("user", JSON.stringify(payload))
+    })
+
+    builder.addCase(login.rejected, (state) => {
+      state.isLoading = false
+      state.error = true
+      state.user = null
+    })
+
   },
 })
 

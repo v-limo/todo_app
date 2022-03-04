@@ -1,7 +1,10 @@
-export type UserId = string
 
-export type USerType = {
-    id: UserId
-    email: string
-    userName?: boolean
+export interface USerType {
+    email: string;
+    token: string;
+    username: string;
+    _id: string;
 }
+
+
+
