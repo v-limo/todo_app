@@ -1,6 +1,8 @@
 const asyncHandler = require('express-async-handler')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const { OAuth2Client } = require('google-auth-library')
+
 const User = require('../models/userModel')
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -68,7 +70,42 @@ const getUser = asyncHandler(async (req, res) => {
   res.status(200).json({ id, username, email })
 })
 
+const googleLogin = asyncHandler(async (req, res) => {
+  const { token } = req.body
+  if (token) {
+    const client = new OAuth2Client(process.env.CLIENT_ID)
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.CLIENT_ID,
+    })
+    const payload = ticket.getPayload()
+    let user = await User.findOne({ email: payload?.email })
+
+    if (!user) {
+      const createdUser = await User.create({
+        email: payload?.email,
+        username: payload?.email,
+      })
+      res.status(201).json({
+        _id: createdUser._id,
+        username: createdUser.username,
+        email: createdUser.email,
+        token: generateToken(createdUser._id, createdUser.email),
+      })
+    } else {
+      res.status(200).json({
+        _id: user._id,
+        username: user.username,
+        email: user?.email,
+        token: generateToken(user._id, user.email),
+      })
+    }
+  } else {
+    res.status(400).json('Unauthenticated - No token')
+  }
+})
+
 const generateToken = (id, email) => {
   return jwt.sign({ id, email }, process.env.SECRET_KEY, { expiresIn: '1d' })
 }
-module.exports = { getUser, registerUser, loginUser }
+module.exports = { getUser, registerUser, loginUser, googleLogin }

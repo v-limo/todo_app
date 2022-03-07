@@ -4,11 +4,14 @@ import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import { GoogleLogin } from 'react-google-login'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { selectAuth } from './../features/auth/authSlice'
 import { toast } from 'react-toastify'
 import { login } from './../features/auth/login'
+import { googleLogin } from './../features/auth/googleLogin'
 import { Loading } from '../components/Loading'
 
 export const Login = () => {
@@ -19,6 +22,12 @@ export const Login = () => {
     email: '',
     password: '',
   })
+
+  const responseGoogle = (response) => {
+    if (response && response.tokenId) {
+      dispatch(googleLogin({ token: response.tokenId }))
+    }
+  }
 
   useEffect(() => {
     if (error) {
@@ -51,6 +60,7 @@ export const Login = () => {
         minHeight: '100vh',
         width: '100vw',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: '50vw',
@@ -81,10 +91,20 @@ export const Login = () => {
           color='primary'
           size='large'
           onClick={handleSubmit}
+          magin='normal'
         >
           Login
         </Button>
       </FormControl>
+      <GoogleLogin
+        // clientId={process.env.CLIENT_ID}
+        clientId={process.env.REACT_APP_CLIENT_ID}
+        buttonText='Login with Google'
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+      />
+      ,
     </Container>
   )
 }

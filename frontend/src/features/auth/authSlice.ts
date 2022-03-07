@@ -3,6 +3,7 @@ import { RootState } from '../../app/store'
 import { USerType } from '../../types/userTypes'
 import { login } from './login'
 import { register } from './register'
+import { googleLogin } from './googleLogin'
 
 type authState = {
   user: USerType | null
@@ -67,6 +68,27 @@ export const authSlice = createSlice({
     })
 
     builder.addCase(login.rejected, (state) => {
+      state.isLoading = false
+      state.error = true
+      state.user = null
+    })
+
+    //googleLogin
+    builder.addCase(googleLogin.pending, (state) => {
+      state.isLoading = true
+      state.user = null
+      state.error = false
+    })
+
+    builder.addCase(googleLogin.fulfilled, (state, { payload }) => {
+      state.isLoading = false
+      state.error = false
+      state.user = null
+      state.user = payload
+      localStorage.setItem("user", JSON.stringify(payload))
+    })
+
+    builder.addCase(googleLogin.rejected, (state) => {
       state.isLoading = false
       state.error = true
       state.user = null
