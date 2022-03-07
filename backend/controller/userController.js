@@ -62,12 +62,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const getUser = asyncHandler(async (req, res) => {
-  const {
-    _id: id,
-    username,
-    email,
-  } = await User.findById(req.user.id).select('-password')
-  res.status(200).json({ id, username, email })
+  res.status(200).json(req.user)
 })
 
 const googleLogin = asyncHandler(async (req, res) => {
