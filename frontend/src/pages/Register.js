@@ -50,7 +50,6 @@ export const Register = () => {
 
   return (
     <Card
-      maxWidth='lg'
       sx={{
         minHeight: '100vh',
         display: 'flex',
@@ -61,6 +60,8 @@ export const Register = () => {
       <FormControl>
         <FormLabel>username</FormLabel>
         <TextField
+          fullWidth
+          sx={{ minWidth: '40vw' }}
           id='email'
           value={formData.username}
           onChange={(e) => {
