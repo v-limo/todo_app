@@ -19,8 +19,7 @@ export const createTodo = createAsyncThunk(
             headers: { Authorization: `Bearer ${token}` },
         }
         const response = await axios.post(API_URL, todo, config)
-        const result: Todo[] = await response.data
-        console.log(result)
+        const result: Todo = await response.data
         return result
     }
 )

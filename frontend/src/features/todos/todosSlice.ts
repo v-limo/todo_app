@@ -28,7 +28,9 @@ export const todosSlice = createSlice({
     },
 
     resetTodoState(state: TodosState) {
-      state = initialState
+      state.list = []
+      state.isLoading = false
+      state.error = false
     },
   },
 
@@ -59,7 +61,7 @@ export const todosSlice = createSlice({
     builder.addCase(createTodo.fulfilled, (state, { payload }) => {
       state.isLoading = false
       state.error = false
-      // state.list.push(payload)
+      state.list.push(payload)
     })
 
     builder.addCase(createTodo.rejected, (state) => {

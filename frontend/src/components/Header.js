@@ -11,6 +11,7 @@ import {
   toggleDarkMode,
 } from '../features/darkMode/darkModeSlice'
 import { logout, selectAuth } from '../features/auth/authSlice'
+import { resetTodoState } from '../features/todos/todosSlice'
 
 export default function Bar() {
   const dispatch = useDispatch()
@@ -33,7 +34,10 @@ export default function Bar() {
             <Button
               variant='outlined'
               color='primary'
-              onClick={() => dispatch(logout())}
+              onClick={() => {
+                dispatch(logout())
+                dispatch(resetTodoState())
+              }}
             >
               Logout
             </Button>

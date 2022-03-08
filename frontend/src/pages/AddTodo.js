@@ -29,7 +29,6 @@ export const AddTodo = () => {
       minWidth='lg'
       sx={{
         minWidth: '40vw',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
