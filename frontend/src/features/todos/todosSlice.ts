@@ -78,7 +78,7 @@ export const todosSlice = createSlice({
     builder.addCase(deleteTodo.fulfilled, (state, { payload }) => {
       state.isLoading = false
       state.error = false
-      // state.list.push(payload)
+      state.list = state.list.filter(todo => todo._id !== payload.id)
     })
 
     builder.addCase(deleteTodo.rejected, (state) => {

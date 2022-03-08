@@ -1,8 +1,12 @@
 import { Card, Divider, Button } from '@mui/material'
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from './../features/todos/deleteTodo';
 
 export const Todo = ({ todo }) => {
-  const deleteTodo = (id) => {
-    console.log({ id })
+  const dispatch = useDispatch()
+
+  const deleteTodoHandler = (id) => {
+    dispatch(deleteTodo(id))
   }
 
   //  ( new Date() > new Date(todo.dateLine))
@@ -17,7 +21,7 @@ export const Todo = ({ todo }) => {
 
       <Button
         variant='contained'
-        onClick={() => deleteTodo(todo._id)}
+        onClick={() => deleteTodoHandler(todo._id)}
         color='error'
       >
         Delete
