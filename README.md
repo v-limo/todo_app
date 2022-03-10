@@ -1,48 +1,138 @@
-# Getting Started with Create React App
+# [Todo](https://github.com/v-limo/todo)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Description
 
-## Available Scripts
+This is very simple fullstack platform built with Reactjs, Express, MongoDB & Redux Toolkit. This app includes profiles, authentication.. Users can login with googleand login user can add, deleted, and update their own todos.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- User can;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - register
+  - login with google login
+  - login with username and password
+  - Add own todo
+  - delete todos
+  - update todos
+  - change darkmode
+  - view own todos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- State management with redux and local storage
+- and much more...
 
-### `npm test`
+## Live demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A live demo of the app is hosted on Heroku.
 
-### `npm run build`
+_Due to demo reasons and Heroku free terms, if an app receives no web traffic in a 30-minute period, it will sleep. Therefore, during the first launch, the application may take longer to load than usual, approximately 15 - 20 seconds. So please be patient and wait for the app to launch. Subsequent launches will be relatively fast._
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technology stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> ### FrontEnd
+>
+> - React
+> - React Hooks
+> - React router
+> - Redux Toolkit
+> - Mui
+> - TypeScript
+>   <br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> ### BackEnd
+>
+> - Node
+> - Express
+> - JWT
+> - MongoDB with mongoose
+> - Heroku hosting
+>   <br>
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clone this repository to the desired location
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```Shell
+git clone https://github.com/v-limo/todo.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Env Variables
 
-## Learn More
+Create a .env file in the root and add the following
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+NODE_ENV = development
+PORT = 5000
+SECRET_KEY = your secret key
+MONGO_URI = your mongodb uri
+CLIENT_ID = your google client id
+CLIENT_SECRET =  your google client secret
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
+cd to frontend, create a .env file in the root
 
+```
+cd frontend
+```
+
+and add the following
+
+```
+
+REACT_APP_API_KEY = google api key
+REACT_APP_API_GOOGLE_CLIENT_ID = google client id
+REACT_APP_CLIENT_ID=  google client id
+
+```
+
+### Install Dependencies (frontend & backend)
+
+```
+npm install
+cd frontend
+npm install
+
+```
+
+### Run
+
+```
+# Run frontend (:3000) & backend (:5000)
+npm run dev
+```
+
+```
+# Run backend only
+npm run server
+```
+
+```
+# Run frontend only
+npm run client
+```
+
+## Build & Deploy
+
+```
+# Create frontend prod build
+cd frontend
+npm run build
+```
+
+### Contributing
+
+Contributions are highly appreciated. In general, I follow the "fork-and-pull" Git workflow.
+
+1. **Fork** this repo
+2. **Clone** the project to your own machine
+3. **Commit** changes to your own branch
+4. **Push** your work back up to your fork
+5. **Submit** a Pull request so that I can review your changes
+
+**NOTE:** Be sure to merge the latest from "upstream" before making a pull request!
+
+### License
+
+MIT license
