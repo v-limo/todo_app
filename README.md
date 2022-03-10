@@ -2,27 +2,24 @@
 
 # Description
 
-This is very simple fullstack platform built with Reactjs, Express, MongoDB & Redux Toolkit. This app includes profiles, authentication.. Users can login with googleand login user can add, deleted, and update their own todos.
+This is very simple fullstack platform built with Reactjs, Express, MongoDB & Redux Toolkit This app includes profiles, authentication and many more features.
+
 
 ## Features
 
-- User can;
-
+- Users can;
   - register
-  - login with google login
-  - login with username and password
-  - Add own todo
-  - delete todos
-  - update todos
-  - change darkmode
-  - view own todos
-
+  - login with email
+  - login with google
+  - create own register
+  - delete own todos
+  - update own todos
 - State management with redux and local storage
 - and much more...
 
 ## Live demo
 
-A live demo of the app is hosted on Heroku.
+A [live](https://github.com/v-limo/todo) demo of the app is hosted on Heroku.
 
 _Due to demo reasons and Heroku free terms, if an app receives no web traffic in a 30-minute period, it will sleep. Therefore, during the first launch, the application may take longer to load than usual, approximately 15 - 20 seconds. So please be patient and wait for the app to launch. Subsequent launches will be relatively fast._
 
