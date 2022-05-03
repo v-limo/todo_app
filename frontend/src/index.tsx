@@ -1,15 +1,19 @@
-import ReactDOM from 'react-dom'
-// import './index.css'
 import { Provider } from 'react-redux'
 
 import App from './App'
 import { CssBaseline } from '@mui/material'
 import { store } from './app/store'
+import { createRoot } from 'react-dom/client'
 
-ReactDOM.render(
+
+
+
+
+createRoot(
+  document.getElementById('root') as Element | DocumentFragment
+).render(
   <Provider store={store}>
     <CssBaseline />
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 )

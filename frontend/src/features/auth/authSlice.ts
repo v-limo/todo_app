@@ -5,6 +5,7 @@ import { login } from './login'
 import { register } from './register'
 import { googleLogin } from './googleLogin'
 
+
 type authState = {
   user: USerType | null
   isLoading: boolean
@@ -25,12 +26,10 @@ export const authSlice = createSlice({
       state.isLoading = false
       state.error = false
       state.user = null
-      localStorage.removeItem("user")
-    }
+      localStorage.removeItem('user')
+    },
   },
   extraReducers: (builder) => {
-
-
     //Register
     builder.addCase(register.pending, (state) => {
       state.isLoading = true
@@ -42,7 +41,7 @@ export const authSlice = createSlice({
       state.error = false
       state.user = null
       state.user = payload
-      localStorage.setItem("user", JSON.stringify(payload))
+      localStorage.setItem('user', JSON.stringify(payload))
     })
 
     builder.addCase(register.rejected, (state) => {
@@ -50,7 +49,6 @@ export const authSlice = createSlice({
       state.error = true
       state.user = null
     })
-
 
     //Login
     builder.addCase(login.pending, (state) => {
@@ -64,7 +62,7 @@ export const authSlice = createSlice({
       state.error = false
       state.user = null
       state.user = payload
-      localStorage.setItem("user", JSON.stringify(payload))
+      localStorage.setItem('user', JSON.stringify(payload))
     })
 
     builder.addCase(login.rejected, (state) => {
@@ -85,7 +83,7 @@ export const authSlice = createSlice({
       state.error = false
       state.user = null
       state.user = payload
-      localStorage.setItem("user", JSON.stringify(payload))
+      localStorage.setItem('user', JSON.stringify(payload))
     })
 
     builder.addCase(googleLogin.rejected, (state) => {
@@ -93,7 +91,6 @@ export const authSlice = createSlice({
       state.error = true
       state.user = null
     })
-
   },
 })
 
