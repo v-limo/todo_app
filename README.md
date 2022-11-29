@@ -2,7 +2,7 @@
 
 # Description
 
-This is very simple fullstack platform built with Reactjs, Express, MongoDB & Redux Toolkit This app includes profiles, authentication and many more features.
+This is very simple fullstack platform built with Reactjs, Express, MongoDB & Redux Toolkit This app includes profiles, authentication and many more features. Mixture of Javascript and Typescript and not currently maintained
 
 
 ## Features
